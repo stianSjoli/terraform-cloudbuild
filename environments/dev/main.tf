@@ -21,20 +21,17 @@ provider "google" {
   project = "${var.project}"
 }
 
-module "vpc" {
-  source  = "../../modules/vpc"
-  project = "${var.project}"
-  env     = "${local.env}"
+module "project-factory" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "~> 15.0"
+
+  name                 = "project-sandbox"
+  random_project_id    = true
+  usage_bucket_name    = "usage-report-bucket"
+  usage_bucket_prefix  = "integration"
+  billing_account      = "My Billing Account 1"
+  
 }
 
-module "http_server" {
-  source  = "../../modules/http_server"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
-}
 
-module "firewall" {
-  source  = "../../modules/firewall"
-  project = "${var.project}"
-  subnet  = "${module.vpc.subnet}"
-}
+
