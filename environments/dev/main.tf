@@ -30,7 +30,7 @@ module "project-factory" {
   usage_bucket_name    = "usage-report-bucket"
   usage_bucket_prefix  = "integration"
   billing_account      = "My Billing Account 1"
-  
+  activate_apis        = ["cloudbilling.googleapis.com"]
 }
 
 
