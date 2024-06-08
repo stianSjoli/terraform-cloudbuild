@@ -38,4 +38,5 @@ steps:
   - | 
       cd environments/dev      
       terraform apply -auto-approve
-      
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET     
