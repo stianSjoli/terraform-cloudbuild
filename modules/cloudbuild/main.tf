@@ -25,5 +25,5 @@ resource "google_project_iam_member" "act_as" {
 resource "google_project_iam_member" "logs_writer" {
   project = var.project_id
   role    = "roles/logging.logWriter"
-  member  = "serviceAccount:${google_service_account_cb_sa.email}"
+  member  = "serviceAccount:${google_service_account.cb_sa.email}"
 }
