@@ -1,7 +1,7 @@
 
 variable "project_id" {
     type = string
-    default = "pfs-gcp-training-346310"
+    default = "terraform-425521"
 }
 
 variable "location" {
