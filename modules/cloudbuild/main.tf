@@ -5,7 +5,7 @@ resource "google_project_service" "resourcemanager" {
 }
 
 resource "google_service_account" "cb_sa" {
-  account_id = "cloudbuild-serviceaccount-terraform"
+  account_id = "cloudbuild-sa-terraform"
 }
 
 resource "google_cloudbuild_trigger" "cb_trigger" {
