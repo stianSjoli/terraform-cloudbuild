@@ -1,5 +1,5 @@
 resource "google_service_account" "cb_sa" {
-  account_id = "build-sa"
+  account_id = "cloudbuild_service_account"
 }
 
 resource "google_cloudbuild_trigger" "cb_trigger" {
