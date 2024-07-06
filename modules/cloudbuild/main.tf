@@ -1,3 +1,9 @@
+resource "google_project_service" "resourcemanager" {
+  project = var.project_id
+  service = "cloudresourcemanager.googleapis.com"
+  disable_on_destroy = true
+}
+
 resource "google_service_account" "cb_sa" {
   account_id = "cloudbuild-serviceaccount"
 }
@@ -19,5 +25,6 @@ resource "google_project_iam_member" "act_as" {
   project = var.project_id
   role    = "roles/iam.serviceAccountUser"
   member  = "serviceAccount:${google_service_account.cb_sa.email}"
+  depends_on = [ google_project_service.resourcemanager ]
 }
 
