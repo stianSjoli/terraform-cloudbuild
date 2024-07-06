@@ -5,6 +5,5 @@ provider "google" {
 
 module "cloudbuild" {
   source  = "../../modules/cloudbuild"
-  project = var.project
 }
 
