@@ -11,8 +11,7 @@ resource "google_cloudbuild_trigger" "cb_trigger" {
   service_account = google_service_account.cb_sa.id
   filename        = "cloudbuild.yaml"
   depends_on = [
-    google_project_iam_member.act_as,
-    google_project_iam_member.logs_writer
+    google_project_iam_member.act_as
   ]
 }
 
