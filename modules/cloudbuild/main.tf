@@ -5,7 +5,7 @@ resource "google_service_account" "cb_sa" {
 resource "google_cloudbuild_trigger" "cb_trigger" {
   trigger_template {
     branch_name = "main"
-    repo_name   = "binary-authz-cloudbuild"
+    repo_name   = "binary-authz"
   }
 
   service_account = google_service_account.cb_sa.id
