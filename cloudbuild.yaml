@@ -20,7 +20,7 @@ steps:
   args: 
   - '-c'
   - |
-    cd environments/test
+    cd environments/dev
     terraform init
 - id: 'tf validate'
   name: 'hashicorp/terraform:1.6.4'
@@ -28,7 +28,7 @@ steps:
   args: 
   - '-c'
   - |
-    cd environments/test
+    cd environments/dev
     terraform validate
 - id: 'tf plan'
   name: 'hashicorp/terraform:1.6.4'
@@ -36,7 +36,7 @@ steps:
   args: 
   - '-c'
   - | 
-      cd environments/test
+      cd environments/dev
       terraform plan
 - id: 'tf apply'
   name: 'hashicorp/terraform:1.6.4'
@@ -44,7 +44,7 @@ steps:
   args: 
   - '-c'
   - | 
-      cd environments/test
+      cd environments/dev
       terraform apply -auto-approve
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET     
