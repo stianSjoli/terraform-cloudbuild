@@ -1,30 +1,15 @@
-resource "google_project_service" "resourcemanager" {
-  project = var.project_id
-  service = "cloudresourcemanager.googleapis.com"
-  disable_on_destroy = true
-}
-
-resource "google_service_account" "cb_sa" {
-  account_id = "cloudbuild-sa-terraform"
-}
-
-resource "google_cloudbuild_trigger" "cb_trigger" {
-  trigger_template {
-    branch_name = "main"
-    repo_name   = "binary-authz"
+module "cloudstorage" {
+  source  = "terraform-google-modules/cloud-storage/google"
+  version = "~> 6.0"
+  project_id  = "security-428910"
+  names = ["homePage"]
+  prefix = "static-site"
+  set_admin_roles = true
+  admins = ["group:foo-admins@example.com"]
+  versioning = {
+    first = true
   }
-
-  service_account = google_service_account.cb_sa.id
-  filename        = "cloudbuild.yaml"
-  depends_on = [
-    google_project_iam_member.act_as
-  ]
+  bucket_admins = {
+    second = "@example.com,user:eggs@example.com"
+  }
 }
-
-resource "google_project_iam_member" "act_as" {
-  project = var.project_id
-  role    = "roles/iam.serviceAccountUser"
-  member  = "serviceAccount:${google_service_account.cb_sa.email}"
-  depends_on = [ google_project_service.resourcemanager ]
-}
-
