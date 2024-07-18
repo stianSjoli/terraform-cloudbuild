@@ -1,15 +1,11 @@
-module "cloudstorage" {
-  source  = "terraform-google-modules/cloud-storage/google"
-  version = "~> 6.0"
-  project_id  = "security-428910"
-  names = ["homePage"]
-  prefix = "static-site"
-  set_admin_roles = true
-  admins = ["group:foo-admins@example.com"]
-  versioning = {
-    first = true
-  }
-  bucket_admins = {
-    second = "@example.com,user:eggs@example.com"
+
+resource "google_storage_bucket" "static-website_bucket" {
+  name          = "static-website_bucket"
+  location      = "US"
+  storage_class = "STANDARD"
+  uniform_bucket_level_access = true
+  website {
+    main_page_suffix = "index.html"
+    not_found_page   = "404.html"
   }
 }
