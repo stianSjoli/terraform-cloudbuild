@@ -15,7 +15,7 @@ resource "google_storage_bucket" "static-website_bucket" {
 
 resource "google_storage_bucket_iam_member" "bucket_A" {
   bucket = google_storage_bucket.static-website_bucket.name
-  role   = "roles/storage.objectCreator"
+  role   = "projects/security-428910/roles/deployment_role"
   member = "terraform-cloudbuild@security-428910.iam.gserviceaccount.com"
   depends_on = [google_storage_bucket.static-website_bucket]
 }
