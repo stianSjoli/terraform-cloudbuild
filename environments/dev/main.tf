@@ -6,3 +6,8 @@ provider "google" {
 module "random" {
   source  = "../../modules/random/pet"
 }
+
+module "cloudstorage" {
+  source  = "../../modules/cloudstorage"
+  bucket_name = "bucket_feature-branch"
+}
