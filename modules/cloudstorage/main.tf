@@ -13,9 +13,9 @@ resource "google_storage_bucket" "static-website_bucket" {
   }
 }
 
-resource "google_storage_bucket_iam_member" "bucket_A" {
+resource "google_storage_bucket_iam_member" "static-website_bucket_iam" {
   bucket = google_storage_bucket.static-website_bucket.name
-  role   = "projects/security-428910/roles/deployment_role"
+  role   = "roles/storage.admin"
   member = "terraform-cloudbuild@security-428910.iam.gserviceaccount.com"
   depends_on = [google_storage_bucket.static-website_bucket]
 }
