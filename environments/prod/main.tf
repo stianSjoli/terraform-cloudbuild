@@ -1,6 +1,6 @@
 
 provider "google" {
-  project = var.project_id
+  project = "security-428910"
 }
 
 # module "cloudbuild" {
