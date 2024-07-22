@@ -1,6 +1,6 @@
 
 provider "google" {
-  project = "security-428910"
+  project = var.project_id
 }
 
 module "random" {
