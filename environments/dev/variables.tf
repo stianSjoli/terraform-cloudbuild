@@ -1,7 +1,7 @@
 
 variable "project_id" {
     type = string
-    default = "terraform-425521"
+    default = "security-428910"
 }
 
 variable "location" {

@@ -1,9 +1,7 @@
 
-variable "project_id" {
+variable "bucket_name" {
     type = string
-    default = "terraform-425521"
 }
-
 variable "location" {
     type = string
     default = "europe-west1"
