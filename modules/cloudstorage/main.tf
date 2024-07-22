@@ -1,3 +1,13 @@
+
+data "google_iam_policy" "admin" {
+  binding {
+    role = "roles/storage.admin"
+    members = [
+      "serviceAccount:terraform-cloudbuild@security-428910.iam.gserviceaccount.com",
+    ]
+  }
+}
+
 resource "random_id" "bucket_prefix" {
   byte_length = 8
 }
@@ -13,9 +23,9 @@ resource "google_storage_bucket" "static-website_bucket" {
   }
 }
 
-resource "google_storage_bucket_iam_member" "static-website_bucket_iam" {
+resource "google_storage_bucket_iam_policy" "policy" {
   bucket = google_storage_bucket.static-website_bucket.name
-  role   = "roles/storage.admin"
-  member = "terraform-cloudbuild@security-428910.iam.gserviceaccount.com"
+  policy_data = data.google_iam_policy.admin.policy_data
   depends_on = [google_storage_bucket.static-website_bucket]
 }
+
