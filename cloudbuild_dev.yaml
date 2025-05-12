@@ -1,36 +1,25 @@
 
 steps:
 - id: 'tf init'
-  name: 'hashicorp/terraform:1.6.4'
-  entrypoint: 'sh'
-  args: 
-  - '-c'
-  - |
+  name: 'hashicorp/terraform:1.10.3
+  script: |
     cd environments/dev
     terraform init
 - id: 'tf validate'
-  name: 'hashicorp/terraform:1.6.4'
+  name: 'hashicorp/terraform:1.10.3'
   entrypoint: 'sh'
-  args: 
-  - '-c'
-  - |
+  script: |
     cd environments/dev
     terraform validate
 - id: 'tf plan'
-  name: 'hashicorp/terraform:1.6.4'
-  entrypoint: 'sh'
-  args: 
-  - '-c'
-  - | 
-      cd environments/dev
-      terraform plan
+  name: 'hashicorp/terraform:1.10.3'
+  script: | 
+    cd environments/dev
+    terraform plan
 - id: 'tf apply'
-  name: 'hashicorp/terraform:1.6.4'
-  entrypoint: 'sh'
-  args: 
-  - '-c'
-  - | 
-      cd environments/dev
-      terraform apply -auto-approve
+  name: 'hashicorp/terraform:1.10.3'
+  script: |
+    cd environments/dev
+    terraform apply -auto-approve
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET     
