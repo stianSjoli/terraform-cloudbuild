@@ -1,7 +1,7 @@
 
 steps:
 - id: 'tf init'
-  name: 'hashicorp/terraform:1.10.3
+  name: 'hashicorp/terraform:1.10.3'
   script: |
     cd environments/dev
     terraform init
