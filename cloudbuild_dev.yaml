@@ -7,7 +7,6 @@ steps:
     terraform init
 - id: 'tf validate'
   name: 'hashicorp/terraform:1.10.3'
-  entrypoint: 'sh'
   script: |
     cd environments/dev
     terraform validate
